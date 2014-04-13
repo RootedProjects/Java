@@ -1,0 +1,8 @@
+name: HagozCraft
+author: Rooted Inc
+version: 1
+main: com.rootedinc.HDPlugin.Main
+description: Adds a handfull of usefull commands to the server.
+commands:
+  hc:
+    description: The base of all commands. Try /hc help
