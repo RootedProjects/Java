@@ -1,0 +1,3 @@
+Als je een error krijgt dat je plugin niet wil opstarten, KIJK NAAR JAH PLUGIN.YML
+
+#Dit moest ff zodat ik deze map kon uploaden naar github :P
