@@ -26,12 +26,8 @@ public class Commands implements CommandExecutor {
                 Player player = (Player) sender;
                 player.sendMessage(ChatColor.RED + "HC commands are: ");
                 player.sendMessage("");
-                player.sendMessage("");
                 player.sendMessage(ChatColor.LIGHT_PURPLE + "/hc achievements <player>, Grants all the achievements in the game.");
-                player.sendMessage("");
                 player.sendMessage(ChatColor.DARK_RED + "/hc achievements <player> clear, Clears all achievements of a person");
-                player.sendMessage("");
-                player.sendMessage(ChatColor.DARK_RED + "If no player is specified, Clears all your achievements");
                 player.sendMessage("");
                 player.sendMessage(ChatColor.AQUA + "/hc kitkat, see for yourself ;)");
                 player.sendMessage("");
