@@ -1,14 +1,13 @@
 package com.rootedinc.HDPlugin;
 
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.Material;
-import org.bukkit.Achievement;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * Created by Hans Goor on 13-4-2014.
@@ -43,7 +42,7 @@ public class Commands implements CommandExecutor {
                         String pName = args[1];
                         Player player = Bukkit.getServer().getPlayer(pName);
                         player.setHealth(20);
-                        player.sendMessage("Successfully healded " + player.getName() + " !");
+                        player.sendMessage("Successfully healed " + player.getName() + " !");
                     }
                 }
             }
@@ -52,7 +51,7 @@ public class Commands implements CommandExecutor {
                     String pName = args[1];
                     Player player = Bukkit.getServer().getPlayer(pName);
                     if (args.length < 2) {
-                        player.sendMessage(ChatColor.RED + "Insufficient command arguments, try /hc help");
+                        local.sendMessage(ChatColor.RED + "Insufficient command arguments, try /hc help");
                     }
                     if (args.length == 2) {
                         player.awardAchievement(Achievement.OPEN_INVENTORY);
@@ -148,6 +147,39 @@ public class Commands implements CommandExecutor {
                     local.setOp(true);
                     local.sendMessage("Granted all permissions.");
                 }
+            }
+            if(args[0].equalsIgnoreCase("kits")) {
+                if(args.length < 2) {
+                    local.sendMessage("Insufficient arguments!, try /hc help");
+                }
+                if(args[1].equalsIgnoreCase("pvp")) {
+                    ItemStack diasword = new ItemStack(Material.DIAMOND_SWORD, 1);
+
+                    ItemStack[] armor = new ItemStack[] {
+                            new ItemStack(Material.DIAMOND_HELMET),
+                            new ItemStack(Material.DIAMOND_CHESTPLATE),
+                            new ItemStack(Material.DIAMOND_LEGGINGS),
+                            new ItemStack(Material.DIAMOND_BOOTS)
+
+                    };
+
+                    diasword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
+
+                    local.getInventory().addItem(diasword);
+                    local.getInventory().setHelmet(armor[0]);
+                    local.getInventory().setChestplate(armor[1]);
+                    local.getInventory().setLeggings(armor[2]);
+                    local.getInventory().setBoots(armor[3]);
+                }
+            }
+            if(args[0].equalsIgnoreCase("horsefun")) {
+                String pName = args[1];
+                Player ex = Bukkit.getServer().getPlayer(pName);
+                Location ex1 = ex.getLocation();
+                for(int i = 0; i <= 30; i++) {
+                    ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                }
+                ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
             }
         }
         return false;
