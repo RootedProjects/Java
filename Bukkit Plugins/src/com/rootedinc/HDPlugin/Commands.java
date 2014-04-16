@@ -37,15 +37,16 @@ public class Commands implements CommandExecutor {
                 player.sendMessage(ChatColor.MAGIC + "123" + ChatColor.RED + "More commands are cumming!" + ChatColor.WHITE + ChatColor.MAGIC + "123");
             }
             if (args[0].equalsIgnoreCase("heal")) {
+                double health = (double) 20;
                 if(local.hasPermission("HC.heal")) {
                     if (args.length == 1) {
                         Player player = (Player) sender;
-                        player.setHealth(20);
+                        player.setHealth(health);
                         player.sendMessage("Successfully healed!");
                     } else if (args.length == 2) {
                         String pName = args[1];
                         Player player = Bukkit.getServer().getPlayer(pName);
-                        player.setHealth(20);
+                        player.setHealth(health);
                         player.sendMessage("Successfully healed " + player.getName() + " !");
                     }
                 }
@@ -164,16 +165,25 @@ public class Commands implements CommandExecutor {
                             new ItemStack(Material.DIAMOND_CHESTPLATE),
                             new ItemStack(Material.DIAMOND_LEGGINGS),
                             new ItemStack(Material.DIAMOND_BOOTS)
-
                     };
 
                     diasword.addEnchantment(Enchantment.DAMAGE_ALL, 5);
 
-                    local.getInventory().addItem(diasword);
+                    local.getInventory().setItemInHand(diasword);
                     local.getInventory().setHelmet(armor[0]);
                     local.getInventory().setChestplate(armor[1]);
                     local.getInventory().setLeggings(armor[2]);
                     local.getInventory().setBoots(armor[3]);
+                }
+                if(args[1].equalsIgnoreCase("redstone")) {
+                    ItemStack redstone = new ItemStack(Material.REDSTONE);
+                    ItemStack comparator = new ItemStack(Material.REDSTONE_COMPARATOR);
+                    ItemStack repeater = new ItemStack(Material.DIODE);
+                    ItemStack iblock = new ItemStack(Material.IRON_BLOCK);
+
+                    local.setGameMode(GameMode.CREATIVE);
+                    local.getInventory().clear();
+                    local.getInventory().addItem(redstone, comparator, repeater, iblock);
                 }
             }
             if(args[0].equalsIgnoreCase("horsefun")) {

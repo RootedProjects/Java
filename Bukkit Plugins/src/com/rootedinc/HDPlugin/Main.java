@@ -33,7 +33,7 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getLogger().info("Plugin is now enabled!");
 
-        File conf = new File(this.getDataFolder() + "config.yml");
+        File conf = new File(getDataFolder() + File.separator + "config.yml");
         if(!conf.exists()) {
             this.getLogger().warning("No config file found!");
             this.getLogger().info("Creating one now!");
