@@ -193,6 +193,33 @@ public class Commands implements CommandExecutor {
                     local.sendMessage(ChatColor.RED + "Insufficient permissions!");
                 }
             }
+            if(args[0].equalsIgnoreCase("spawn")) {
+                Location spawn = local.getWorld().getSpawnLocation();
+                local.teleport(spawn);
+                local.sendMessage(ChatColor.RED + "Teleported to spawn!");
+            }
+            if(args[0].equalsIgnoreCase("tp")) {
+                if(args.length < 2) {
+                    local.sendMessage(ChatColor.RED + "Insufficient arguments!");
+                }
+                if(args.length == 2) {
+                    String pName = args[1];
+                    Player ex = Bukkit.getServer().getPlayer(pName);
+                    Location locex = ex.getLocation();
+                    local.teleport(locex);
+                    local.sendMessage(ChatColor.AQUA + "Succesfully teleported to " + ex.getName() + " !");
+                }
+                if(args.length == 3) {
+                    String pName1 = args[1];
+                    String pName2 = args[2];
+                    Player p1 = Bukkit.getServer().getPlayer(pName1);
+                    Player p2 = Bukkit.getServer().getPlayer(pName2);
+                    Location p2loc = p2.getLocation();
+
+                    p1.teleport(p2loc);
+                    local.sendMessage(ChatColor.AQUA + "Successfully teleported " + p1.getName() + " to " + p2.getName() + " !");
+                }
+            }
         }
         return false;
     }
