@@ -29,6 +29,10 @@ public class Commands implements CommandExecutor {
                 player.sendMessage(ChatColor.DARK_RED + "/hc achievements <player> clear, Clears all achievements of a person");
                 player.sendMessage("");
                 player.sendMessage(ChatColor.AQUA + "/hc kitkat, see for yourself ;)");
+                if(player.hasPermission("HC.horsefun")) {
+                    player.sendMessage("");
+                    player.sendMessage(ChatColor.DARK_GREEN + "/hc horsefun <player>, For zhe loll");
+                }
                 player.sendMessage("");
                 player.sendMessage(ChatColor.MAGIC + "123" + ChatColor.RED + "More commands are cumming!" + ChatColor.WHITE + ChatColor.MAGIC + "123");
             }
@@ -173,13 +177,18 @@ public class Commands implements CommandExecutor {
                 }
             }
             if(args[0].equalsIgnoreCase("horsefun")) {
+                if(local.hasPermission("HC.horsefun"));
                 String pName = args[1];
                 Player ex = Bukkit.getServer().getPlayer(pName);
                 Location ex1 = ex.getLocation();
-                for(int i = 0; i <= 30; i++) {
-                    ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                if(args.length < 2) {
+                    local.sendMessage("Insufficient arguments!, try /hc help");
+                } else if(args.length == 2) {
+                    for (int i = 0; i <= 30; i++) {
+                        ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                    }
+                    ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
                 }
-                ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
             }
         }
         return false;
