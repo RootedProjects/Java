@@ -154,7 +154,7 @@ public class Commands implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("kits")) {
                 if(args.length < 2) {
-                    local.sendMessage("Insufficient arguments!, try /hc help");
+                    local.sendMessage(ChatColor.RED + "Insufficient arguments!, try /hc help");
                 }
                 if(args[1].equalsIgnoreCase("pvp")) {
                     ItemStack diasword = new ItemStack(Material.DIAMOND_SWORD, 1);
@@ -177,17 +177,20 @@ public class Commands implements CommandExecutor {
                 }
             }
             if(args[0].equalsIgnoreCase("horsefun")) {
-                if(local.hasPermission("HC.horsefun"));
-                String pName = args[1];
-                Player ex = Bukkit.getServer().getPlayer(pName);
-                Location ex1 = ex.getLocation();
-                if(args.length < 2) {
-                    local.sendMessage("Insufficient arguments!, try /hc help");
-                } else if(args.length == 2) {
-                    for (int i = 0; i <= 30; i++) {
-                        ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                if(local.hasPermission("HC.horsefun")) {
+                    String pName = args[1];
+                    Player ex = Bukkit.getServer().getPlayer(pName);
+                    Location ex1 = ex.getLocation();
+                    if (args.length < 2) {
+                        local.sendMessage(ChatColor.RED + "Insufficient arguments!, try /hc help");
+                    } else if (args.length == 2) {
+                        for (int i = 0; i <= 30; i++) {
+                            ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                        }
+                        ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
                     }
-                    ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
+                } else {
+                    local.sendMessage(ChatColor.RED + "Insufficient permissions!");
                 }
             }
         }
