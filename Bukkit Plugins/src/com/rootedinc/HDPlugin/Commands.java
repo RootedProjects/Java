@@ -200,7 +200,7 @@ public class Commands implements CommandExecutor {
                         ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
                     }
                 } else {
-                    local.sendMessage(ChatColor.RED + "Insufficient permissions!");
+                    local.sendMessage(ChatColor.RED + "Insufficient permissions!, try /hc help");
                 }
             }
             if(args[0].equalsIgnoreCase("spawn")) {
@@ -210,7 +210,7 @@ public class Commands implements CommandExecutor {
             }
             if(args[0].equalsIgnoreCase("tp")) {
                 if(args.length < 2) {
-                    local.sendMessage(ChatColor.RED + "Insufficient arguments!");
+                    local.sendMessage(ChatColor.RED + "Insufficient arguments!, try /hc help");
                 }
                 if(args.length == 2) {
                     String pName = args[1];
@@ -228,6 +228,25 @@ public class Commands implements CommandExecutor {
 
                     p1.teleport(p2loc);
                     local.sendMessage(ChatColor.AQUA + "Successfully teleported " + p1.getName() + " to " + p2.getName() + " !");
+                }
+            }
+            if(args[0].equalsIgnoreCase("enchant")) {
+                if(args.length < 3) {
+                    local.sendMessage("Insufficient arguments!, try /hc help");
+                }
+                if(args.length == 3) {
+                    String senchantment = args[1];
+                    String slevel = args[2];
+                    Enchantment enchantment = Enchantment.getByName(senchantment);
+                    int ilevel = Integer.parseInt(slevel);
+                    ItemStack cHand = local.getInventory().getItemInHand();
+                    cHand.addEnchantment(enchantment, ilevel);
+                }
+                if(args.length == 4 && args[3].equalsIgnoreCase("clear")) {
+                    String senchantment = args[1];
+                    Enchantment enchantment = Enchantment.getByName(senchantment);
+                    ItemStack cHand = local.getInventory().getItemInHand();
+                    cHand.removeEnchantment(enchantment);
                 }
             }
         }
