@@ -34,6 +34,8 @@ public class Commands implements CommandExecutor {
                     player.sendMessage(ChatColor.DARK_GREEN + "/hc horsefun <player>, For zhe loll");
                 }
                 player.sendMessage("");
+                player.sendMessage("/hc hunger <hungerlevel> <player>, sets hunger level!");
+                player.sendMessage("");
                 player.sendMessage(ChatColor.MAGIC + "123" + ChatColor.RED + "More commands are cumming!" + ChatColor.WHITE + ChatColor.MAGIC + "123");
             }
             if (args[0].equalsIgnoreCase("heal")) {
@@ -186,22 +188,20 @@ public class Commands implements CommandExecutor {
                     local.getInventory().addItem(redstone, comparator, repeater, iblock);
                 }
             }
-            if(args[0].equalsIgnoreCase("horsefun")) {
-                if(local.hasPermission("HC.horsefun")) {
-                    String pName = args[1];
-                    Player ex = Bukkit.getServer().getPlayer(pName);
-                    Location ex1 = ex.getLocation();
-                    if (args.length < 2) {
-                        local.sendMessage(ChatColor.RED + "Insufficient arguments!, try /hc help");
-                    } else if (args.length == 2) {
-                        for (int i = 0; i <= 30; i++) {
-                            ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                if (args[0].equalsIgnoreCase("horsefun")) {
+                        String pName = args[1];
+                        Player ex = Bukkit.getServer().getPlayer(pName);
+                        Location ex1 = ex.getLocation();
+                        if (args.length < 2) {
+                            local.sendMessage(ChatColor.RED + "Insufficient arguments!, try /hc help");
+                        } else if (args.length == 2) {
+                            for (int i = 0; i <= 30; i++) {
+                                ex.getWorld().spawnEntity(ex1, EntityType.HORSE);
+                            }
+                            ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
                         }
-                        ex.sendMessage(ChatColor.BLUE + "U" + ChatColor.RED + "Mad" + ChatColor.LIGHT_PURPLE + "Bro?");
-                    }
-                } else {
-                    local.sendMessage(ChatColor.RED + "Insufficient permissions!, try /hc help");
-                }
+                    } else {
+                        local.sendMessage(ChatColor.RED + "Insufficient permissions!, try /hc help");
             }
             if(args[0].equalsIgnoreCase("spawn")) {
                 Location spawn = local.getWorld().getSpawnLocation();
@@ -247,6 +247,23 @@ public class Commands implements CommandExecutor {
                     Enchantment enchantment = Enchantment.getByName(senchantment);
                     ItemStack cHand = local.getInventory().getItemInHand();
                     cHand.removeEnchantment(enchantment);
+                }
+            }
+            if(args[0].equalsIgnoreCase("hunger")) {
+                String hunger = args[1];
+                String pname = args[2];
+                Player ex = Bukkit.getServer().getPlayer(pname);
+                int hungeri = Integer.parseInt(hunger);
+                if(args.length < 3) {
+                    local.sendMessage("Insufficient arguments, try /hc help");
+                }
+                if(args.length == 2) {
+                    local.setFoodLevel(hungeri);
+                    local.sendMessage("Set hunger of " + local.getName() + " to " + hunger + " !");
+                }
+                if(args.length == 3) {
+                    ex.setFoodLevel(hungeri);
+                    local.sendMessage("Set hunger of " + ex.getName() + " to " + hunger + " !");
                 }
             }
         }
