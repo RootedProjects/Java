@@ -1,0 +1,27 @@
+package com.rootedinc.HagozCraft;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemSpade;
+import net.minecraft.util.IIcon;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class ItemEmeraldShovel extends ItemSpade{
+	@SideOnly(Side.CLIENT)
+	public IIcon itemTexture;
+
+	public ItemEmeraldShovel(ToolMaterial material) {
+		super(material);
+		// TODO Auto-generated constructor stub
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister reg) {
+		this.itemIcon = reg.registerIcon(basis.modid + ":emeraldShovel");
+	}
+	
+	public void setFull3D(){
+		return true;
+	}
+
+}

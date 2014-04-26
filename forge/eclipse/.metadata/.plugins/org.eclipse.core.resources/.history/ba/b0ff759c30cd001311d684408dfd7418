@@ -1,0 +1,16 @@
+package com.rootedinc.HagozCraft;
+
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemSword;
+
+public class ItemEmeraldSword extends ItemSword {
+
+	public ItemEmeraldSword(ToolMaterial emerald) {
+		super(emerald);
+	}
+	
+	public Item setFull3D() {
+		return HagozCraft.emeraldSword;
+	}
+
+}

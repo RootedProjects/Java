@@ -1,0 +1,7 @@
+package com.rootedinc.HagozCraft;
+
+import net.minecraft.item.Item;
+
+public class ItemEmeraldSword extends Item {
+
+}

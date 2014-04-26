@@ -1,0 +1,12 @@
+package com.rootedinc.HagozCraft;
+
+import net.minecraft.entity.projectile.EntityArrow;
+import net.minecraft.world.World;
+
+public class ItemEmeraldArrow extends EntityArrow{
+
+	public ItemEmeraldArrow(World par1World) {
+		super(par1World);
+	}
+
+}
